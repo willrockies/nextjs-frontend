@@ -20,20 +20,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
+
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
-            <Box
-              component="main"
-              sx={{
-                flexGrow: 1,
-                bgcolor: "Background.default",
-                mt: ["122px", "135px", "146px"],
-                p: 3,
-              }}
-            >
-              {children}
-            </Box>
+            <div>
+              <Navbar />
+              <Box
+                component="main"
+                sx={{
+                  flexGrow: 1,
+                  bgcolor: "Background.default",
+                  mt: ["122px", "135px", "146px"],
+                  p: 3,
+                }}
+              >
+                {children}
+              </Box>
+            </div>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

@@ -39,3 +39,7 @@ material lib
 npm install @mui/material-nextjs @emotion/cache
 npm install @mui/material
 npm install @emotion/react @emotion/styled @emotion/cache
+
+
+para detalhe do produto foi instalado a lib
+npm install @hookform/resolvers yup
