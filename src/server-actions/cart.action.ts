@@ -22,3 +22,10 @@ export type CartItem = {
     });
     redirect("/my-cart");
   }
+
+  export async function removeItemFromCartAction(formData: FormData){
+    const cartService = CartServiceFactory.create();
+    const index = parseInt(formData.get('index') as string)
+    cartService.removeItemFromCart(index);
+  }
+  

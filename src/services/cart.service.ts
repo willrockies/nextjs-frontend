@@ -26,24 +26,46 @@ export class CartService {
 
         if (!cartString) {
             this.cookieStore.set("cart", JSON.stringify({ items: [], total: 0 }));
-          }
+        }
 
-          const cart: Cart = cartString ? JSON.parse(cartString) : { items: [], total: 0 };
-          const { product_id, quantity } = input;
-          const product = await this.productService.getProduct(product_id);
+        const cart: Cart = cartString ? JSON.parse(cartString) : { items: [], total: 0 };
+        const { product_id, quantity } = input;
+        const product = await this.productService.getProduct(product_id);
 
-          const productPrice = product.price * quantity;
-      
-          cart.items.push({
+        const productPrice = product.price * quantity;
+
+        cart.items.push({
             product_id,
             quantity,
             total: productPrice,
-          });
-          cart.total += productPrice;
-      
-          this.cookieStore.set("cart", JSON.stringify(cart));
+        });
+        cart.total += productPrice;
+
+        this.cookieStore.set("cart", JSON.stringify(cart));
     }
 
+
+    removeItemFromCart(index: number) {
+        const cartRaw = this.cookieStore.get("cart")?.value;
+
+        const cart: Cart = cartRaw ? JSON.parse(cartRaw) : { items: [] };
+
+        cart.items.splice(index, 1);
+
+        this.cookieStore.set("cart", JSON.stringify(cart));
+    }
+
+    getCart() {
+        const cartRaw = this.cookieStore.get("cart")?.value;
+
+        const cart: Cart = cartRaw ? JSON.parse(cartRaw) : { items: [], total: 0 };
+
+        return cart;
+    }
+
+    clearCart() {
+        this.cookieStore.delete("cart");
+    }
 
 }
 
