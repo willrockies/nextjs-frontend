@@ -7,8 +7,6 @@ import Image from "next/legacy/image";
 import { Product } from "@/models";
 import { ProductService } from "@/services/product.service";
 
-
-
 async function ProductDetailPage({
     params,
 }: {
