@@ -43,3 +43,7 @@ npm install @emotion/react @emotion/styled @emotion/cache
 
 para detalhe do produto foi instalado a lib
 npm install @hookform/resolvers yup
+
+
+executar comando para abrir uma porta somente para images
+npx serve -l 9000 images

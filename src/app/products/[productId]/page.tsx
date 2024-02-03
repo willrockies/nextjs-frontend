@@ -5,20 +5,17 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Image from "next/legacy/image";
 import { Product } from "@/models";
+import { ProductService } from "@/services/product.service";
 
-const product: Product = {
-    id: "1",
-    name: "Produto 1",
-    description: "Producto 1 descrição",
-    price: 10,
-    image_url: "https://source.unsplash.com/random?product",
-    category_id: "1",
-}
+
+
 async function ProductDetailPage({
     params,
 }: {
     params: { productId: string }
 }) {
+
+    const product = await new ProductService().getProduct(params.productId);
 
     return (
 
