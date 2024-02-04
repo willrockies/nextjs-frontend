@@ -10,34 +10,12 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { OrderStatus } from "../../../models";
 import { Total } from "../../../components/Total";
-//   import { OrderServiceFactory } from "../../../services/order.service";
-const order = {
-    id: "1",
-    items: [
-        {
-            id: 1,
-            product: {
+import { OrderServiceFactory } from "../../../services/order.service";
 
-                id: "1",
-                name: "Produto 1",
-                description: "Producto 1 descrição",
-                price: 10,
-                image_url: "https://source.unsplash.com/random?product",
-                category_id: "1",
-            },
-            quantity: 2,
-            price: 100,
-        },
-
-    ],
-    total: 100,
-    status: OrderStatus.PENDING,
-    created_at: Date.now().toString(),
-}
 
 async function MyOrderDetail({ params }: { params: { orderId: string } }) {
 
-    //const order = await OrderServiceFactory.create().getOrder(params.orderId);
+    const order = await OrderServiceFactory.create().getOrder(params.orderId);
 
     return (
         <Box>
